@@ -7,7 +7,10 @@ function HomeLayout() {
             <nav>
                 <span className="text-4xl text-green-500">Rufai</span>
             </nav>
-            <Outlet/>
+            <section className="align-element py-20">
+                <Outlet />
+            </section>
+            
         </>
     )
 }
