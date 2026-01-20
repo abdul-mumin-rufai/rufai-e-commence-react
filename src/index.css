@@ -1,6 +1,8 @@
 @import "tailwindcss";
-@plugin "daisyui";
 @plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+    themes: acid, retro;
+  }
 
 @layer components {
     .align-element{

@@ -2,14 +2,30 @@ import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import NavLinks from './NavLinks';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function NavBar() {
-    const [theme, setTheme] = useState(false);
+    const themes = {
+        acid: 'acid',
+        retro: 'retro'
+    }
 
-    function handleTheme() { 
-        setTheme(!theme)
+    function getThemeFromLocalStorage() { 
+        return localStorage.getItem('theme') || themes.retro;
     };
+
+    const [theme, setTheme] = useState(getThemeFromLocalStorage);
+    function handleTheme() {
+        const { acid, retro } = themes;
+        const newTheme = theme === retro ? acid : retro;
+        setTheme(newTheme);
+    };
+
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
     return (
         <nav className='bg-base-300'>
             <div className='navbar align-element'>
@@ -30,7 +46,7 @@ function NavBar() {
                             className='menu menu-sm mt-3 z-1 p-2 dropdown-content
                             shadow bg-base-200 rounded-box w-52'
                         >
-                            <NavLinks/>
+                            <NavLinks />
                         </ul>
                     </div>
                 </div>
@@ -44,7 +60,7 @@ function NavBar() {
                     <label className='swap swap-rotate'>
                         <input type="checkbox" onChange={handleTheme} />
                         {/* sun icon */}
-                        <BsSunFill className='swap-on h-4 w-4'/>
+                        <BsSunFill className='swap-on h-4 w-4' />
                         {/* moon icon */}
                         <BsMoonFill className='swap-off h-4 w-4' />
                     </label>
