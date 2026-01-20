@@ -7,7 +7,9 @@ import { useEffect, useState } from 'react';
 function NavBar() {
     const themes = {
         acid: 'acid',
-        retro: 'retro'
+        retro: 'retro',
+        dark: 'dark',
+        light: 'light'
     }
 
     function getThemeFromLocalStorage() { 
@@ -16,8 +18,8 @@ function NavBar() {
 
     const [theme, setTheme] = useState(getThemeFromLocalStorage);
     function handleTheme() {
-        const { acid, retro } = themes;
-        const newTheme = theme === retro ? acid : retro;
+        const { acid, retro, dark, light } = themes;
+        const newTheme = theme === retro ? acid : theme === acid ? dark : theme === dark ? light : retro;
         setTheme(newTheme);
     };
 

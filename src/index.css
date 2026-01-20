@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
-    themes: acid, retro;
+    themes: acid, retro, dark, light;
   }
 
 @layer components {
