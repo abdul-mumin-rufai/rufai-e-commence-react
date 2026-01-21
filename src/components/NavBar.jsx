@@ -36,7 +36,7 @@ function NavBar() {
                     <NavLink
                         to='/' className="hidden lg:flex btn btn-primary text-3xl items-center font-bold"
                     >
-                        Rufai Inc.
+                        Titanium Inc.
                     </NavLink>
                     {/* DROPDOWN */}
                     <div className="dropdown">
