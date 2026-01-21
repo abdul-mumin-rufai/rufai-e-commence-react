@@ -1,10 +1,10 @@
-function Landing() {
+import { Hero } from "../components";
 
+function Landing() {
 
     return (
         <>
-            <p>Landing page</p>
-
+            <Hero />
         </>
     )
 }
