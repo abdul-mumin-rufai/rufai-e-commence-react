@@ -13,6 +13,13 @@ import {
   SingleProduct
 } from "./pages";
 
+import { ErrorElement } from "./components";
+
+//dataFetches
+import { loader as landingLoader } from "./pages/Landing";
+
+//actions
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,7 +28,9 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Landing />
+        element: <Landing />,
+        errorElement: <ErrorElement />,
+        loader: landingLoader,
       },
       {
         path: 'products',
@@ -29,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'products/:id',
-        element:<SingleProduct/>
+        element: <SingleProduct />
       },
       {
         path: 'cart',
@@ -60,13 +69,13 @@ const router = createBrowserRouter([
     errorElement: <Error />
   }
 ]);
- 
+
 
 function App() {
- 
+
   return (
     <>
-      <RouterProvider router={router}/>  
+      <RouterProvider router={router} />
     </>
   )
 }
