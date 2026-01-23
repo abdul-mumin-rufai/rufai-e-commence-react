@@ -3,7 +3,7 @@ import { formatPrice } from "../utils/index.js";
 
 
 const ProductsGrid = () => {
-  const { featuredProducts } = useLoaderData();
+  const { featuredProducts } = useLoaderData(); 
 
   return (
     <div className="pt-12 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
