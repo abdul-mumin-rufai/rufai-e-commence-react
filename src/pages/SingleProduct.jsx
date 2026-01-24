@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { formatPrice, customFetch } from '../utils';
 import { useLoaderData } from 'react-router-dom';
 
-
-
 export async function loader({ params }) {
     const response = await customFetch(`/products/${params.id}`);
     const singleProduct = response.data.data;
@@ -12,11 +10,13 @@ export async function loader({ params }) {
 
 };
 
-function SingleProduct() {
 
+function SingleProduct() {
     const { singleProduct } = useLoaderData();
     const { image, title, price, description, colors, company } = singleProduct.attributes;
     const cedisAmount = formatPrice(price);
+    const [productColor, setProductColor] = useState(colors[0]);
+
 
     return (
         <section>
@@ -43,7 +43,27 @@ function SingleProduct() {
                     <h1 className='capitalise text-3xl font-bold'>{title}</h1>
                     <h4 className='text-xl text-neutral-content font-bold mt-2'>{company}</h4>
                     <p className='mt-3 text-xl'>{cedisAmount}</p>
-                    <p className='mt-6 leading-8'>{ description}</p>
+                    <p className='mt-6 leading-8'>{description}</p>
+                    {/*  COLORS */}
+                    <div className='mt-6'>
+                        <h4 className='text-md font-medium tracking-wider capitalize'>
+                            colors
+                        </h4>
+                        <div className="mt-2">
+                            {
+                                colors.map((color) => {
+                                    return <button
+                                        key={color} type='button' className={`badge w-6 h-6 mr-2 
+                                        ${color === productColor && 'border-2 border-accent'}`}
+                                        style={{ backgroundColor: color }}
+                                        onClick={()=> setProductColor(color)}
+                                    >
+
+                                    </button>
+                                })
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
             
