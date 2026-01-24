@@ -16,6 +16,11 @@ function SingleProduct() {
     const { image, title, price, description, colors, company } = singleProduct.attributes;
     const cedisAmount = formatPrice(price);
     const [productColor, setProductColor] = useState(colors[0]);
+    const [amount, setAmount] = useState(1);
+
+    function handleAmount(e) {
+        setAmount(parseInt(e.target.value));
+    };
 
 
     return (
@@ -56,7 +61,7 @@ function SingleProduct() {
                                         key={color} type='button' className={`badge w-6 h-6 mr-2 
                                         ${color === productColor && 'border-2 border-accent'}`}
                                         style={{ backgroundColor: color }}
-                                        onClick={()=> setProductColor(color)}
+                                        onClick={() => setProductColor(color)}
                                     >
 
                                     </button>
@@ -64,9 +69,30 @@ function SingleProduct() {
                             }
                         </div>
                     </div>
+                    {/* AMOUNT */}
+                    <div className="form-control w-auto max-w-xs">
+                        <label className='label' htmlFor='amount'>
+                            <h4 className='text-md font-medium tracking-wider capitalize'>
+                                amount
+                            </h4>
+                        </label>
+                        <select className='select select-primary select-bordered select-md'
+                            id="amount" value={amount} onChange={handleAmount}>
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
+                        </select>
+                    </div>
+                    {/* CART BUTTON */}
+                    <div className="mt-10">
+                        <button className='btn btn-primary btn-md capitalize' onClick={()=>console.log('add to bag')
+                        }>
+                            add to bag
+                        </button>
+                    </div>
                 </div>
             </div>
-            
+
         </section>
     )
 }
