@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { formatPrice, customFetch } from '../utils';
+import { formatPrice, customFetch, generateAmountOption } from '../utils';
 import { useLoaderData } from 'react-router-dom';
 
 export async function loader({ params }) {
@@ -78,9 +78,7 @@ function SingleProduct() {
                         </label>
                         <select className='select select-primary select-bordered select-md'
                             id="amount" value={amount} onChange={handleAmount}>
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
+                            {generateAmountOption(7)}
                         </select>
                     </div>
                     {/* CART BUTTON */}
