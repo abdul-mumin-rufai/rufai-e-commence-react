@@ -3,11 +3,11 @@ import { formatPrice } from "../utils";
 
 
 const ProductsGrid = () => {
-  const { featuredProducts } = useLoaderData(); 
+  const { products } = useLoaderData(); 
 
   return (
     <div className="pt-12 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {featuredProducts.map((product) => {
+      {products.map((product) => {
         const { title, price, image } = product.attributes;
         return <Link key={product.id} to={`/products/${product.id}`} className="card w-full
         hover:shadow-2xl transition duration-300">
