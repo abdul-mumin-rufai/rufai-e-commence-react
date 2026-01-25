@@ -1,6 +1,4 @@
-import Filters from "../components/Filters";
-import Pagination from "../components/Pagination";
-import ProductsContainer from "../components/ProductsContainer";
+import { Filters,Pagination, ProductsContainer } from "../components";
 import { customFetch } from "../utils";
 
 const url = '/products';
