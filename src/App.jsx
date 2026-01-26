@@ -32,7 +32,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Landing />,
-        errorElement: <ErrorElement />,  
+        errorElement: <ErrorElement />,   
         loader: landingLoader,
       },
       {

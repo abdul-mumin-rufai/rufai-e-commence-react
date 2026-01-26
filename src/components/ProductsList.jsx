@@ -4,7 +4,7 @@ import { formatPrice } from "../utils";
 
 const ProductsList = () => {
     const { products } = useLoaderData();
-
+    
     return (
         <div >
             {products.map((product) => {
@@ -19,7 +19,7 @@ const ProductsList = () => {
                                 {title}
                             </h3>
                             <h4 className="text-md capitalize text-neutral-content">
-                                {company}
+                                {company} 
                             </h4>
                             <p className="font-medium ml-0 sm:ml-auto text-lg">
                                 {formatPrice(price)}
