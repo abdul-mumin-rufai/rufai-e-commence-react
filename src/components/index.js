@@ -10,3 +10,5 @@ export { default as FeaturedProducts } from './FeaturedProducts';
 export { default as Filters } from './Filters';
 export { default as ProductsContainer } from './ProductsContainer';
 export { default as Pagination } from './Pagination';
+export { default as Loading } from './Loading';
+
