@@ -6,7 +6,8 @@ import FormCheckbox from './FormCheckbox';
 
 
 const Filters = () => {
-    const { meta } = useLoaderData();
+    const { meta, params } = useLoaderData();
+    const { search, company, category, shipping, price, order} = params;
     return (
         <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 
         sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
@@ -16,13 +17,15 @@ const Filters = () => {
                 label='search product'
                 name='search'
                 size='input-sm'
+                defaultValue={search}
             />
             {/* CATEGORIES */}
             <FormSelect
-                label='select categoty'
+                label='select category'
                 name='company'
                 list={meta.categories}
                 size='select-sm'
+                defaultValue={category}
             />
             {/* COMPANIES */}
             <FormSelect
@@ -30,6 +33,7 @@ const Filters = () => {
                 name='company'
                 list={meta.companies}
                 size='select-sm'
+                defaultValue={company}
             />
             {/* SORT BY */}
             <FormSelect
@@ -37,11 +41,17 @@ const Filters = () => {
                 name='order'
                 list={['a-z', 'z-a','high', 'low']}
                 size='select-sm'
+                defaultValue={order}
             />
             {/* PRICE */}
-            <FormRange name='price' label='select price' size='range-sm' />
+            <FormRange
+                name='price'
+                label='select price'
+                size='range-sm'
+                price={price}
+            />
             {/* SHIPPING FILTER */}
-            <FormCheckbox name='shipping' label='free shipping' size='checkbox-sm' />
+            <FormCheckbox name='shipping' label='free shipping' size='checkbox-sm' defaultValue={shipping} />
             {/* BUTTON */}
             <button type='submit' className='btn btn-primary btn-sm'>
                 search
