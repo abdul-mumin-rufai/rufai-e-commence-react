@@ -7,7 +7,13 @@ const Pagination = () => {
     return index + 1;
   });
 
+  const { search, pathname } = useLocation();
+  const navigate = useNavigate();
+  
   function handlePageChange(pageNumber) {
+    const searchParams = new URLSearchParams(search);
+    searchParams.set('page', pageNumber);
+    navigate(`${pathname}?${searchParams.toString()}`);
     console.log(pageNumber);
 
   };
