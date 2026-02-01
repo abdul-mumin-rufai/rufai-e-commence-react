@@ -3,23 +3,45 @@ import { useState } from 'react';
 import { formatPrice, customFetch, generateAmountOption } from '../utils';
 import { useLoaderData } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { addItem } from '../featuresCart/cartSlice';
+
 export async function loader({ params }) {
     const response = await customFetch(`/products/${params.id}`);
-    const singleProduct = response.data.data;
-    return { singleProduct };
+    const product = response.data.data;
+    return { product };
 
 };
 
 
 function SingleProduct() {
-    const { singleProduct } = useLoaderData();
-    const { image, title, price, description, colors, company } = singleProduct.attributes;
+    const { product } = useLoaderData();
+    const { image, title, price, description, colors, company } = product.attributes;
     const cedisAmount = formatPrice(price);
     const [productColor, setProductColor] = useState(colors[0]);
     const [amount, setAmount] = useState(1);
+    
 
     function handleAmount(e) {
         setAmount(parseInt(e.target.value));
+    };
+    // variable for the reducer dispatch.
+    const dispatch = useDispatch();
+
+    // payload for the action
+    const cartProduct = {
+        cartID: product.id + productColor,
+        productID: product.id,
+        image,
+        title,
+        price,
+        productColor,
+        company,
+    }
+    
+    // function to add items to cart. payload describe the action ie more info of the action.
+    function addToCart() { 
+        dispatch(addItem({product:cartProduct}))
     };
 
 
@@ -83,8 +105,9 @@ function SingleProduct() {
                     </div>
                     {/* CART BUTTON */}
                     <div className="mt-10">
-                        <button className='btn btn-primary btn-md capitalize' onClick={()=>console.log('add to bag')
-                        }>
+                        <button
+                            className='btn btn-primary btn-md capitalize' onClick={addToCart}
+                        >
                             add to bag
                         </button>
                     </div>
