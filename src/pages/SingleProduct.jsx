@@ -37,6 +37,7 @@ function SingleProduct() {
         price,
         productColor,
         company,
+        amount,
     }
     
     // function to add items to cart. payload describe the action ie more info of the action.
