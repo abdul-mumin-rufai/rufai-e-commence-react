@@ -24,6 +24,7 @@ function NavBar() {
         setTheme(newTheme);
     };
 
+    //changing the DOM
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
