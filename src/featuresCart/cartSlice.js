@@ -19,6 +19,7 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: getCartFromLocalStorage(),
     reducers: {
+        // always remember to take in consideration the payload when needed.
         addItem: (state, action) => {
             const { product } = action.payload;
             const item = state.cartItems.find((i) => i.cartID === product.cartID);
