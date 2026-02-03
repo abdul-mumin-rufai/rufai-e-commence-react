@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
+// every product is a cart item.
 const defaultState = {
     cartItems: [],
     numItemsInCart: 0,
