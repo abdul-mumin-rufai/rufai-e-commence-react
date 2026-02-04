@@ -9,16 +9,16 @@ function Cart() {
     const numItemInCart = useSelector((state) => state.cartState.numItemInCart);
 
     if (numItemInCart === 0) {
-        return <SectionTitle text= 'Your cart is empty'/>
+        return <SectionTitle title='Your cart is empty' />
     }
 
 
     return (
         <>
-            <SectionTitle text='Your Shopping Cart' />
+            <SectionTitle title='Your Shopping Cart' />
             <div className="mt-8 grid gap-8 lg:grid-cols-12">
                 <div className="lg:col-span-8">
-                    <CartItemsList/>
+                    <CartItemsList />
                 </div>
                 <div className="lg:col-span-4 lg: pl-4">
                     <CartTotal />
