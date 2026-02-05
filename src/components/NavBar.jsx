@@ -2,35 +2,17 @@ import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import NavLinks from './NavLinks';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import {useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from '../featuresUsers/userSlice';
+
 
 function NavBar() {
-    const themes = {
-        acid: 'acid',
-        retro: 'retro',
-        dark: 'dark',
-        light: 'light'
-    }
-
-    function getThemeFromLocalStorage() { 
-        return localStorage.getItem('theme') || themes.retro;
-    };
-
-    const [theme, setTheme] = useState(getThemeFromLocalStorage);
+    const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+    const dispatch = useDispatch();
+    
     function handleTheme() {
-        const { acid, retro, dark, light } = themes;
-        const newTheme = theme === retro ? acid : theme === acid ? dark : theme === dark ? light : retro;
-        setTheme(newTheme);
+        dispatch(toggleTheme());
     };
-
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }, [theme]);
-
-    const numItemsInCart = useSelector((state)=> state.cartState.numItemsInCart)
-
     return (
         <nav className='bg-base-300'>
             <div className='navbar align-element'>

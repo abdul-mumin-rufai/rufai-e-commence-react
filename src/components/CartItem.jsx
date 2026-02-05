@@ -50,6 +50,7 @@ const CartItem = ({ cartItem }) => {
                     <select
                         name="amount" id="amount"
                         className="mt-2 select select-base select-bordered select-xs"
+                        value={amount}
                         onChange={editAmount}
                     >
                         {generateAmountOption(amount + 7)}
