@@ -3,8 +3,9 @@ import { CartItemsList, CartTotal, SectionTitle } from "../components";
 import { Link } from "react-router-dom";
 
 function Cart() {
-    // temporal user.
-    const user = null;
+    //accessed the user state.
+    const user = useSelector((state) => state.userState.user);
+
     // called the numItemInCart state from the cart reducer.
     const numItemInCart = useSelector((state) => state.cartState.numItemInCart);
 

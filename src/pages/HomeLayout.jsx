@@ -10,6 +10,7 @@ function HomeLayout() {
             <Header />
             <NavBar />
             {
+                /* SETTING UP THE LOADING COMPONENT AND RENDERING ALL CHILDREN COMPONENTS OF THE HOMELAYOUT */
                 isLoading ? <Loading />
                     : <section className="align-element py-20">
                         <Outlet />
