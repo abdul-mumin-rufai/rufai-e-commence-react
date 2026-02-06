@@ -1,6 +1,13 @@
 import { FormInput, SubmitButton } from "../components";
 import { Form, Link } from "react-router-dom";
 
+
+export const action = (store) => async () => {
+    console.log(store);
+    
+    return null;
+};
+
 function Login() {
     return (
         <>
@@ -14,13 +21,13 @@ function Login() {
                         type='email'
                         label="email"
                         name="identifier"
-                        defaultValue="rufai@test.com"
+                        defaultValue="rufai.abdulmumin@hotmail.com"
                     />
                     <FormInput
                         type="password"
                         label="password"
                         name="password"
-                        defaultValue="secret"
+                        defaultValue="#M15051997m15"
                     />
                     <div className="mt-4">
                         <SubmitButton text='LOGIN' />
