@@ -1,10 +1,25 @@
 import { FormInput, SubmitButton } from '../components';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, redirect } from 'react-router-dom';
+import { customFetch } from '../utils';
+import { toast } from 'react-toastify';
 
-
-export async function action() {
+// getting the formValue the input form. the form name should be the same as the server name.
+export async function action({ request }) {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData); 
+    try {
+        // since the name of the form input is the same as the server input we used the data
+        //registering user
+        const response = await customFetch.post('/auth/local/register', data);
+        toast.success('account created sucessfully')
+        return redirect('/login')
+    } catch (error) {
+        const errorMessage = error?.response?.data?.message || 'username or email already used'
+        toast.error(errorMessage);
+    }
     return null;
-}
+};
+
 
 function Register() {
     

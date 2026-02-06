@@ -21,7 +21,7 @@ import { loader as singleProductLoader } from "./pages/SingleProduct";
 import { loader as productsLoader } from "./pages/Products";
 
 
-//actions registering user, 
+//actions registering user.
 import { action as registerAction } from "./pages/Register";
 
 
