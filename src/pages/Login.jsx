@@ -1,14 +1,32 @@
 import { FormInput, SubmitButton } from "../components";
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect } from "react-router-dom";
+import { customFetch } from "../utils";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../featuresUsers/userSlice";
 
 
-export const action = (store) => async () => {
-    console.log(store);
+
+// we are calling the store in the action because, we want to dispatch the use state when we login in a user.
+export const action = (store) => async ({ request }) => {
+    //getting the form values
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
     
-    return null;
+    try {
+        //logging in the user
+        const response = await customFetch.post('/auth/local', data); //data email and password for login
+        store.dispatch(loginUser(response.data))
+        toast.success('logged in sucessfully')
+        return redirect('/')
+    } catch (error) {
+        const errorMessage = error?.response?.data?.message || 'Invaild username or password';
+        toast.error(errorMessage);
+    }
 };
 
 function Login() {
+    const dispatch = useDispatch();
     return (
         <>
             <section className="h-screen grid place-items-center">
