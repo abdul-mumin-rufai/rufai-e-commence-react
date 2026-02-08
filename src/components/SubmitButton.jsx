@@ -2,7 +2,7 @@ import { useNavigation } from "react-router-dom";
 
 
 function SubmitButton({ text }) {
-    const navigation = useNavigation;
+    const navigation = useNavigation();
     const isSubmitting = navigation.state === 'submitting';
 
     return (
@@ -10,9 +10,10 @@ function SubmitButton({ text }) {
             <button type="submit" className="btn btn-primary btn-block" disabled={isSubmitting}>
                 {
                     isSubmitting ? <>
-                        <span className="loading loading-spinner"></span>
-                        sending...
-                    </> :
+                        <span className="loading-dots"></span>
+                            ... submitting
+                    </>
+                     :
                         text || 'submit'
                 }
             </button>
