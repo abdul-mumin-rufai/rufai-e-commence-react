@@ -16,6 +16,7 @@ export const action = (store) => async ({ request }) => {
     try {
         //logging in the user
         const response = await customFetch.post('/auth/local', data); //data email and password for login
+        // the user info is located at where we logged in the user
         store.dispatch(loginUser(response.data))
         toast.success('logged in sucessfully')
         return redirect('/')
