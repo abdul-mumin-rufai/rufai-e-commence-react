@@ -1,5 +1,5 @@
 import { FormInput, SubmitButton } from "../components";
-import { Form, Link, redirect } from "react-router-dom";
+import { Form, Link, redirect, useNavigate } from "react-router-dom";
 import { customFetch } from "../utils";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -28,6 +28,22 @@ export const action = (store) => async ({ request }) => {
 
 function Login() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logInAsGuestUser = async () => { 
+        try {
+            const response = await customFetch.post('/auth/local', {
+                identifier: 'rufai@test.com',
+                password:'rufaitest'
+            });
+            dispatch(loginUser(response.data));
+            toast.success('Logged in as guest');
+            navigate('/');
+        } catch (error) {
+            const errorMessage = error?.response?.data?.message || 'Guest login failed';
+            toast.error(errorMessage);
+        }
+    };
     return (
         <>
             <section className="h-screen grid place-items-center">
@@ -40,18 +56,16 @@ function Login() {
                         type='email'
                         label="email"
                         name="identifier"
-                        defaultValue="rufai.abdulmumin@hotmail.com"
                     />
                     <FormInput
                         type="password"
                         label="password"
                         name="password"
-                        defaultValue="#M15051997m15"
                     />
                     <div className="mt-4">
                         <SubmitButton text='LOGIN' />
                     </div>
-                    <button type="button" className="btn btn-secondary btn-block">
+                    <button type="button" className="btn btn-secondary btn-block" onClick={logInAsGuestUser}>
                         guest user
                     </button>
                     <p className="text-center">
