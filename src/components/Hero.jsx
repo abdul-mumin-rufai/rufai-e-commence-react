@@ -14,13 +14,17 @@ const Hero = () => {
                 {/* Hero info */}
                 <div>
                     <h1 className='text-4xl sm:text-5xl font-bold leading-tight'>
-                        We are changing the way you think about Cyber Security
+                        Discover the modern interior furniture and make your home
+                        stylish and comfortable.
                     </h1>
                     <p className='mt-6 text-lg leading-8 text-gray-600'>
-                        Our innovative solutions are designed to protect your
-                        digital assets and ensure your peace of mind. Cybersecurity
-                        is not just our business, it's our passion. Join us in
-                        making the digital world a safer place for everyone.
+                        We offer a wide range of furniture for all your needs.
+                        Whether you're looking for a new sofa, a dining table,
+                        or a bed, we have something for you.
+                        Our furniture is made from high-quality
+                        materials and is designed to last. Shop with us today
+                        and find the perfect piece for your home.
+                        Contact Rufai Inc. for more information about our products and services.
                     </p>
                     <div className='mt-8 flex flex-wrap gap-4'>
                         <Link to="/products" className='btn btn-primary btn-lg'>
