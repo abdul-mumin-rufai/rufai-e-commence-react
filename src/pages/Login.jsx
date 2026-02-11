@@ -21,7 +21,7 @@ export const action = (store) => async ({ request }) => {
         toast.success('logged in sucessfully')
         return redirect('/')
     } catch (error) {
-        const errorMessage = error?.response?.data?.message || 'Invaild username or password';
+        const errorMessage = error?.response?.data?.error?.message || 'Invaild username or password';
         toast.error(errorMessage);
     }
 };

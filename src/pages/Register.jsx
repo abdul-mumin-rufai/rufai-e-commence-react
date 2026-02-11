@@ -14,7 +14,7 @@ export async function action({ request }) {
         toast.success('account created sucessfully')
         return redirect('/login')
     } catch (error) {
-        const errorMessage = error?.response?.data?.message || 'username or email already used'
+        const errorMessage = error?.response?.data?.error?.message || 'username or email already used'
         toast.error(errorMessage);
     }
     return null;

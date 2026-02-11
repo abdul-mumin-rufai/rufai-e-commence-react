@@ -33,8 +33,10 @@ export const action = (store) => async ({request}) => {
         return redirect('/orders')
         
     } catch (error) {
-        const errorMessage = error?.response?.data?.message || 'error ocuired while processing your orders'
+        const errorMessage = error?.response?.data?.error?.message || 'error ocuired while processing your orders'
         toast.error(errorMessage);
+        if (error?.response?.status === 401 || 403) //undefined or invalid request
+            return redirect('/login');
         return null;
     }
 };
