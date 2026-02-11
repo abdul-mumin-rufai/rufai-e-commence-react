@@ -65,7 +65,7 @@ function Login() {
                     <div className="mt-4">
                         <SubmitButton text='LOGIN' />
                     </div>
-                    <button type="button" className="btn btn-secondary btn-block" onClick={logInAsGuestUser}>
+                    <button type="button" className="btn btn-secondary btn-block capitalize" onClick={logInAsGuestUser}>
                         guest user
                     </button>
                     <p className="text-center">
