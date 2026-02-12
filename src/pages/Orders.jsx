@@ -1,6 +1,8 @@
-import { redirect } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
 import { customFetch } from "../utils";
+import {SectionTitle, Pagination, OrderList} from '../components';
+
 
 export const loader = (store) => async ({ request }) => {
     const user = store.getState().userState.user;
@@ -18,7 +20,7 @@ export const loader = (store) => async ({ request }) => {
                 Authorization: `Bearer ${user.token}`
             }
         });
-        return {orders:response.data.data, meta:response.data.meta}
+        return {orders:response.data.data, meta:response.data.meta}// list of orders
         
     } catch (error) {
         const errorMessage = error?.response?.data?.error?.message || 'error ocuired while processing your orders'
@@ -30,12 +32,17 @@ export const loader = (store) => async ({ request }) => {
 };
 
 function Orders() {
-
+    const { meta } = useLoaderData();
+    if (meta.pagination.total < 1) {
+        return <SectionTitle title='You do not have orders yet!!! Place your orders now.'/>
+    }
     return (
-        <h1 className="text-3xl">
-            Orders
-        </h1>
-    )
+        <>
+            <SectionTitle title='Your orders' />
+            <OrderList />
+            <Pagination />
+        </>
+    );
 }
 
 export default Orders;
