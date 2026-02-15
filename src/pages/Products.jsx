@@ -2,7 +2,7 @@ import { Filters,Pagination, ProductsContainer } from "../components";
 import { customFetch } from "../utils";
 
 const url = '/products';
-export async function loader({ request }) {
+export const loader = (queryClient) =>async ({request}) => {
     // getting the products params
     const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
     //getting the products

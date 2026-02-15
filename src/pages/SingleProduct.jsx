@@ -6,7 +6,7 @@ import { useLoaderData } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addItem } from '../featuresCart/cartSlice';
 
-export async function loader({ params }) {
+export const loader = (queryClient) =>async ({params}) => {
     const response = await customFetch(`/products/${params.id}`);
     const product = response.data.data;
     return { product };
