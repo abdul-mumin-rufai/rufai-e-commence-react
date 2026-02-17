@@ -1,4 +1,4 @@
-function About() {
+export const About= ()=> {
 
 
     return (

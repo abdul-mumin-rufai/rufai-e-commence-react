@@ -2,7 +2,7 @@ import { Outlet, useNavigation } from "react-router-dom";
 import { Header, NavBar, Loading } from "../components";
 
 
-function HomeLayout() {
+export const HomeLayout=()=> {
     const navigation = useNavigation();
     const isLoading = navigation.state === 'loading';
     return (

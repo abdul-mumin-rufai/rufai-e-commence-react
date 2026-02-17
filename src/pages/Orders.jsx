@@ -31,7 +31,7 @@ export const loader = (store) => async ({ request }) => {
     }
 };
 
-function Orders() {
+export const Orders=()=> {
     const { meta } = useLoaderData();
     if (meta.pagination.total < 1) {
         return <SectionTitle title='You do not have orders yet!!! Place your orders now.'/>
