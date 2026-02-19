@@ -29,7 +29,7 @@ export const loader = (queryClient) =>async ({request}) => {
     return { products, meta, params};
 };
 
-function Products() {
+export const Products =()=> {
     return (
         <>
             <Filters />

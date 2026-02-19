@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { CartItemsList, CartTotal, SectionTitle } from "../components";
 import { Link } from "react-router-dom";
 
-function Cart() {
+export const Cart =()=> {
     //accessed the user state.
     const user = useSelector((state) => state.userState.user);
 

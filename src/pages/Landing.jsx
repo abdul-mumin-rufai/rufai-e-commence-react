@@ -16,7 +16,7 @@ export const loader = (queryClient) =>async () => {
     return { products };
 };
 
-function Landing() {
+export const Landing =()=> {
     return (
         <>
             <Hero />

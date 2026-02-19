@@ -26,7 +26,7 @@ export const action = (store) => async ({ request }) => {
     }
 };
 
-function Login() {
+export const Login =()=> {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

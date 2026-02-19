@@ -21,7 +21,7 @@ export const loader = (queryClient) =>async ({params}) => {
 };
 
 
-function SingleProduct() {
+export const SingleProduct =()=> {
     const { product } = useLoaderData();
     const { image, title, price, description, colors, company } = product.attributes;
     const cedisAmount = formatPrice(price);

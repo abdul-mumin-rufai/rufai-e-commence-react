@@ -13,7 +13,7 @@ export const loader = (store) => () => {
     }
     return null;
  }
-function Checkout() {
+ export const Checkout =()=> {
 
     const cartTotal = useSelector((state) => state.cartState.cartTotal);
     if (cartTotal === 0) {

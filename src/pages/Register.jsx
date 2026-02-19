@@ -21,7 +21,7 @@ export async function action({ request }) {
 };
 
 
-function Register() {
+export const Register =()=> {
     
     return (
         <>
