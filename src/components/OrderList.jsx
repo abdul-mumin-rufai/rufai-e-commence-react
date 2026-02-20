@@ -24,7 +24,6 @@ const OrderList = () => {
                     <tbody>
                         {
                             orders.map((order) => {
-                                console.log(order)
                                 const id = order.id
                                 const {name, address, numItemsInCart, orderTotal, createdAt} =order.attributes
                                 const date = day(createdAt).format('hh:mm a - MMM Do, YYYY');

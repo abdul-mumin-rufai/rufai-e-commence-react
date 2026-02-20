@@ -4,7 +4,18 @@ import { customFetch } from "../utils";
 import {SectionTitle, ComplexPagination, OrderList} from '../components';
 
 
-export const loader = (store) => async ({ request }) => {
+const ordersQuery = (params, user) => {
+    return {
+        queryKey: ['orders', user.username, params.page ? parseInt(params.page) : 1],
+        queryFn: ()=> customFetch.get('/orders', {
+                params, headers: {
+                    Authorization: `Bearer ${user.token}`
+                }
+            }),
+}
+   
+}
+export const loader = (store, queryClient) => async ({ request }) => {
     const user = store.getState().userState.user;
 
     if (!user) {
@@ -13,13 +24,9 @@ export const loader = (store) => async ({ request }) => {
     }
     
     const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
-
+    
     try {
-        const response = await customFetch.get('/orders', {
-            params, headers: {
-                Authorization: `Bearer ${user.token}`
-            }
-        });
+        const response = await queryClient.ensureQueryData(ordersQuery(params,user))
         return {orders:response.data.data, meta:response.data.meta}// list of orders
         
     } catch (error) {

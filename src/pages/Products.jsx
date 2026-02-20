@@ -22,6 +22,7 @@ const allProductsQuery = (queryParams) => {
 export const loader = (queryClient) =>async ({request}) => {
     // getting the products params
     const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]); // create an objct for the query params
+    
     //getting the products
     const response = await queryClient.ensureQueryData(allProductsQuery(params));
     const products = response.data.data;
