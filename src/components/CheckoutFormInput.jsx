@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 
 
-export const action = (store) => async ({request}) => {
+export const action = (store, queryClient) => async ({request}) => {
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
     const user = store.getState().userState.user;
@@ -28,9 +28,11 @@ export const action = (store) => async ({request}) => {
                 Authorization:`Bearer ${user.token}`
             }
         });
+        queryClient.removeQueries(['orders']); // remove previous query when new order is made.
+
         store.dispatch(clearCart());
-        toast.success('orders place sucessfully')
-        return redirect('/orders')
+        toast.success('orders place sucessfully');
+        return redirect('/orders');
         
     } catch (error) {
         const errorMessage = error?.response?.data?.error?.message || 'error ocuired while processing your orders'
